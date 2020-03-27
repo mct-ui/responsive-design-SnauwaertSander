@@ -196,9 +196,75 @@ a:focus {
     height: 100%;
 }
 
+
+/*
+    Component: header
+    ---
+    Main header of the website
+*/
+
+.c-header__nav {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .c-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .c-header__nav {
+        display: block;
+    }
+}
+
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.c-nav--meta {
+    font-size: 16px;
+}
+
+.c-nav__link {
+    text-decoration: none;
+    font-weight: 400;
+    padding: 8px 0;
+    display: inline-block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+    color: #202024;
+}
+
+.c-nav__link--meta,
+.c-nav__link--meta:visited,
+.c-nav__link--meta:active {
+    color: #6c6c75;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+    color: #5051db
+}
+
 @media (min-width: 768px) {
-    .c-logo__symbol {
-        height: 40px;
+    .c-nav__list {
+        display: flex;
+    }
+    .c-nav__link {
+        padding: 8px 16px;
     }
 }
 
@@ -206,6 +272,46 @@ a:focus {
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
+
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    display: flow-root;
+}
+
+.o-section+.o-section {
+    margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+    .o-section--lg+.o-section--lg,
+    .o-section--xl+.o-section--xl {
+        margin-top: 48px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .o-section--xl+.o-section--xl {
+        margin-top: 72px;
+    }
+}
+
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
 
 
 /*
@@ -232,9 +338,13 @@ a:focus {
         padding-left: 48px;
         padding-right: 48px;
     }
+    .o-row--md {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
     .o-row--lg {
-        padding-top: 72px;
         padding-bottom: 48px;
+        padding-top: 72px;
     }
 }
 
@@ -267,156 +377,131 @@ a:focus {
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
-}
-
-.o-layout__item {
-    flex-basis: 100%;
-}
-
-
-/* gutter modifiers, these affect o-layout__item too */
-
-.o-layout--gutter {
-    margin: 0 -12px;
-}
-
-.o-layout--gutter>.o-layout__item {
-    padding: 0 12px;
-}
-
-.o-layout--gutter-sm {
-    margin: 0 -6px;
-}
-
-.o-layout--gutter-sm>.o-layout__item {
-    padding: 0 6px;
-}
-
-.o-layout--gutter-lg {
-    margin: 0 -24px;
-}
-
-.o-layout--gutter-lg>.o-layout__item {
-    padding: 0 24px;
-}
-
-
-/* reverse horizontal row modifier */
-
-.o-layout--row-reverse {
-    flex-direction: row-reverse;
-}
-
-
-/* Horizontal alignment modifiers*/
-
-.o-layout--justify-start {
-    justify-content: flex-start;
-}
-
-.o-layout--justify-end {
-    justify-content: flex-end;
-}
-
-.o-layout--justify-center {
-    justify-content: center;
-}
-
-.o-layout--justify-space-around {
-    justify-content: space-around;
-}
-
-.o-layout--justify-space-evenly {
-    justify-content: space-evenly;
-}
-
-.o-layout--justify-space-between {
     justify-content: space-between;
 }
 
 
-/* Vertical alignment modifiers */
+}
+.o-layout__item {
+    flex-basis: 100%;
+}
 
+/* gutter modifiers, these affect o-layout__item too */
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+.o-layout--gutter>.o-layout__item {
+    padding: 0 12px;
+}
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+.o-layout--gutter-sm>.o-layout__item {
+    padding: 0 6px;
+}
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+.o-layout--gutter-lg>.o-layout__item {
+    padding: 0 24px;
+}
+
+/* reverse horizontal row modifier */
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+.o-layout--justify-center {
+    justify-content: center;
+}
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+.o-layout--justify-space-evenly {
+    justify-content: space-evenly;
+}
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
 .o-layout--align-start {
     align-items: flex-start;
 }
-
 .o-layout--align-end {
     align-items: flex-end;
 }
-
 .o-layout--align-center {
     align-items: center;
 }
-
 .o-layout--align-baseline {
     align-items: baseline;
 }
 
-
 /* Vertical alignment modifiers that only work if there is one than one flex item */
-
 .o-layout--align-content-start {
     align-content: start;
 }
-
 .o-layout--align-content-end {
     align-content: end;
 }
-
 .o-layout--align-content-center {
     align-content: center;
 }
-
 .o-layout--align-content-space-around {
     align-content: space-around;
 }
-
 .o-layout--align-content-space-between {
     align-content: space-between;
 }
-
 
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
 
-
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
 
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+.u-pt-clear {
+    padding-top: 0 !important;
+}
 
 /*
     Utilities: max-width
     ---
     Utility classes to put specific max widths onto elements
 */
-
 .u-max-width-xs {
     max-width: 18em !important;
 }
-
 .u-max-width-sm {
     max-width: 36em !important;
 }
-
 .u-max-width-md {
     max-width: 42em !important;
 }
-
 .u-max-width-lg {
     max-width: 60em !important;
 }
-
 .u-max-width-xl {
     max-width: 75em !important;
 }
-
 .u-max-width-none {
     max-width: none !important;
 }
-
 
 /*
     Utility: Flex
@@ -424,208 +509,229 @@ a:focus {
     Utility classes to put specific flex properties onto elements
     Will be mostly used on o-layout__item
 */
-
 .u-flex-basis-auto {
     flex-basis: auto !important;
 }
-
 .u-flex-grow-1 {
     flex-grow: 1 !important;
 }
-
 .u-1-of-2 {
     flex-basis: calc(100% / 2) !important;
 }
-
 .u-1-of-3 {
     flex-basis: calc(100% / 3) !important;
 }
-
 .u-2-of-3 {
     flex-basis: calc(100% / 3 * 2) !important;
 }
-
 .u-1-of-4 {
     flex-basis: calc(100% / 4) !important;
 }
-
 .u-3-of-4 {
     flex-basis: calc(100% / 4 * 3) !important;
 }
-
 .u-1-of-5 {
     flex-basis: calc(100% / 5) !important;
 }
-
 .u-2-of-5 {
     flex-basis: calc(100% / 5 * 2) !important;
 }
-
 .u-3-of-5 {
     flex-basis: calc(100% / 5 * 3) !important;
 }
-
 .u-4-of-5 {
     flex-basis: calc(100% / 5 * 4) !important;
 }
-
 .u-1-of-6 {
     flex-basis: calc(100% / 6) !important;
 }
-
 .u-5-of-6 {
     flex-basis: calc(100% / 6 * 5) !important;
 }
-
 @media (min-width: 576px) {
     .u-1-of-2-bp1 {
         flex-basis: calc(100% / 2) !important;
     }
+    
     .u-1-of-3-bp1 {
         flex-basis: calc(100% / 3) !important;
     }
+    
     .u-2-of-3-bp1 {
         flex-basis: calc(100% / 3 * 2) !important;
     }
+    
     .u-1-of-4-bp1 {
         flex-basis: calc(100% / 4) !important;
     }
+    
     .u-3-of-4-bp1 {
         flex-basis: calc(100% / 4 * 3) !important;
     }
+    
     .u-1-of-5-bp1 {
         flex-basis: calc(100% / 5) !important;
     }
+    
     .u-2-of-5-bp1 {
         flex-basis: calc(100% / 5 * 2) !important;
     }
+    
     .u-3-of-5-bp1 {
         flex-basis: calc(100% / 5 * 3) !important;
     }
+    
     .u-4-of-5-bp1 {
         flex-basis: calc(100% / 5 * 4) !important;
     }
+    
     .u-1-of-6-bp1 {
         flex-basis: calc(100% / 6) !important;
     }
+    
     .u-5-of-6-bp1 {
         flex-basis: calc(100% / 6 * 5) !important;
     }
 }
-
 @media (min-width: 768px) {
     .u-1-of-2-bp2 {
         flex-basis: calc(100% / 2) !important;
     }
+    
     .u-1-of-3-bp2 {
         flex-basis: calc(100% / 3) !important;
     }
+    
     .u-2-of-3-bp2 {
         flex-basis: calc(100% / 3 * 2) !important;
     }
+    
     .u-1-of-4-bp2 {
         flex-basis: calc(100% / 4) !important;
     }
+    
     .u-3-of-4-bp2 {
         flex-basis: calc(100% / 4 * 3) !important;
     }
+    
     .u-1-of-5-bp2 {
         flex-basis: calc(100% / 5) !important;
     }
+    
     .u-2-of-5-bp2 {
         flex-basis: calc(100% / 5 * 2) !important;
     }
+    
     .u-3-of-5-bp2 {
         flex-basis: calc(100% / 5 * 3) !important;
     }
+    
     .u-4-of-5-bp2 {
         flex-basis: calc(100% / 5 * 4) !important;
     }
+    
     .u-1-of-6-bp2 {
         flex-basis: calc(100% / 6) !important;
     }
+    
     .u-5-of-6-bp2 {
         flex-basis: calc(100% / 6 * 5) !important;
     }
 }
-
 @media (min-width: 992px) {
     .u-1-of-2-bp3 {
         flex-basis: calc(100% / 2) !important;
     }
+    
     .u-1-of-3-bp3 {
         flex-basis: calc(100% / 3) !important;
     }
+    
     .u-2-of-3-bp3 {
         flex-basis: calc(100% / 3 * 2) !important;
     }
+    
     .u-1-of-4-bp3 {
         flex-basis: calc(100% / 4) !important;
     }
+    
     .u-3-of-4-bp3 {
         flex-basis: calc(100% / 4 * 3) !important;
     }
+    
     .u-1-of-5-bp3 {
         flex-basis: calc(100% / 5) !important;
     }
+    
     .u-2-of-5-bp3 {
         flex-basis: calc(100% / 5 * 2) !important;
     }
+    
     .u-3-of-5-bp3 {
         flex-basis: calc(100% / 5 * 3) !important;
     }
+    
     .u-4-of-5-bp3 {
         flex-basis: calc(100% / 5 * 4) !important;
     }
+    
     .u-1-of-6-bp3 {
         flex-basis: calc(100% / 6) !important;
     }
+    
     .u-5-of-6-bp3 {
         flex-basis: calc(100% / 6 * 5) !important;
     }
 }
-
 @media (min-width: 1200px) {
     .u-1-of-2-bp4 {
         flex-basis: calc(100% / 2) !important;
     }
+    
     .u-1-of-3-bp4 {
         flex-basis: calc(100% / 3) !important;
     }
+    
     .u-2-of-3-bp4 {
         flex-basis: calc(100% / 3 * 2) !important;
     }
+    
     .u-1-of-4-bp4 {
         flex-basis: calc(100% / 4) !important;
     }
+    
     .u-3-of-4-bp4 {
         flex-basis: calc(100% / 4 * 3) !important;
     }
+    
     .u-1-of-5-bp4 {
         flex-basis: calc(100% / 5) !important;
     }
+    
     .u-2-of-5-bp4 {
         flex-basis: calc(100% / 5 * 2) !important;
     }
+    
     .u-3-of-5-bp4 {
         flex-basis: calc(100% / 5 * 3) !important;
     }
+    
     .u-4-of-5-bp4 {
         flex-basis: calc(100% / 5 * 4) !important;
     }
+    
     .u-1-of-6-bp4 {
         flex-basis: calc(100% / 6) !important;
     }
+    
     .u-5-of-6-bp4 {
         flex-basis: calc(100% / 6 * 5) !important;
     }
 }
 
-
 /*------------------------------------*\
   #MEDIA
 \*------------------------------------*/
-
 
 /*
     Media Queries
@@ -635,36 +741,33 @@ a:focus {
     USE THEM INLINE!
 */
 
-
 /* Extra small devices (portrait phones, less than 576px)
    No media query since this is the default in mobile first design
 */
-
 
 /* Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {}
 */
 
-
 /* Medium devices (tablets, 768px and up) */
-
 @media (min-width: 768px) {
     html {
         font-size: 20px;
         line-height: 1.6;
     }
+    
+    .c-logo {
+        height: 40px;
+    }
 }
-
 
 /* Large devices (landscape tablets, desktops, 992px and up)
 @media (min-width: 992px) {}
 */
 
-
 /* Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {}
 */
-
 
 /*
     Print styles.
@@ -672,7 +775,6 @@ a:focus {
     Inlined to avoid the additional HTTP request:
     http://www.phpied.com/delay-loading-your-print-css/
 */
-
 @media print {
     *,
     *:before,
@@ -684,13 +786,16 @@ a:focus {
         box-shadow: none !important;
         text-shadow: none !important;
     }
+    
     a,
     a:visited {
         text-decoration: underline;
     }
+    
     a[href]:after {
         content: " (" attr(href) ")";
     }
+    
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
@@ -698,13 +803,16 @@ a:focus {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
+    
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
     }
+    
     pre {
         white-space: pre-wrap !important;
     }
+    
     pre,
     blockquote {
         border: 1px solid #999;
@@ -714,19 +822,23 @@ a:focus {
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
+    
     thead {
         display: table-header-group;
     }
+    
     tr,
     img {
         page-break-inside: avoid;
     }
+    
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
+    
     h2,
     h3 {
         page-break-after: avoid;
